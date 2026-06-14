@@ -10,12 +10,11 @@ import 'package:malhar_ets/utils/session_manager.dart';
 import 'package:malhar_ets/connector.dart';
 
 AppBar getAppBar(BuildContext context, bool isLoggedIn) {
+  final bool canPop = ModalRoute.of(context)?.canPop ?? false;
   return AppBar(
-    leading: (Navigator.canPop(context) && !isLoggedIn)
-        ? IconButton(
-            icon: const Icon(Icons.arrow_back, color: AppColors.primary),
-            onPressed: () => Navigator.maybePop(context),
-          )
+    automaticallyImplyLeading: !isLoggedIn,
+    leading: (canPop && !isLoggedIn)
+        ? null
         : Padding(
             padding: const EdgeInsets.all(5),
             child: Image.asset(

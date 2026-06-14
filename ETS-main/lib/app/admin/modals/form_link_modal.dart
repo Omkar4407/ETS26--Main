@@ -110,32 +110,6 @@ Future<void> showFormLinkModal(
                       contentPadding: EdgeInsets.zero,
                     );
                   }),
-
-                  const SizedBox(height: 6),
-                  ...allContingents.map((contingent) {
-                    final isChecked = selectedContingents.contains(
-                      contingent.contingentId,
-                    );
-                    return CheckboxListTile(
-                      dense: true,
-                      title: Text(
-                        contingent.contingentCode,
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                      value: isChecked,
-                      onChanged: (bool? val) {
-                        setState(() {
-                          if (val == true) {
-                            selectedContingents.add(contingent.contingentId);
-                          } else {
-                            selectedContingents.remove(contingent.contingentId);
-                          }
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.zero,
-                    );
-                  }),
                 ],
               ),
             ),
